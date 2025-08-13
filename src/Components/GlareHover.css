@@ -1,0 +1,60 @@
+.glare-hover {
+  width: var(--gh-width);
+  height: var(--gh-height);
+  background: var(--gh-bg);
+  border-radius: var(--gh-br);
+  border: 1px solid var(--gh-border);
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.glare-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--gh-angle),
+      hsla(0, 0%, 0%, 0) 60%,
+      var(--gh-rgba) 70%,
+      hsla(0, 0%, 0%, 0),
+      hsla(0, 0%, 0%, 0) 100%);
+  transition: var(--gh-duration) ease;
+  background-size: var(--gh-size) var(--gh-size), 100% 100%;
+  background-repeat: no-repeat;
+  background-position: -100% -100%, 0 0;
+}
+
+.glare-hover:hover {
+  cursor: pointer;
+}
+
+.glare-hover:hover::before {
+  background-position: 100% 100%, 0 0;
+}
+
+.glare-hover--play-once::before {
+  transition: none;
+}
+
+.glare-hover--play-once:hover::before {
+  transition: var(--gh-duration) ease;
+  background-position: 100% 100%, 0 0;
+}
+
+.glare-wrap { position: relative; overflow: hidden; border-radius: 1rem; }
+
+/* Overlay variant: full-cover, no interaction, no extra border/bg/layout */
+.glare-wrap > .glare-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: block;         /* override the grid centering */
+  border: 0;              /* ignore border even if variables are set */
+  background: transparent;
+}
+
+/* When the parent is hovered, run the sweep on the overlay */
+.glare-wrap:hover > .glare-overlay::before {
+  background-position: 100% 100%, 0 0;
+}

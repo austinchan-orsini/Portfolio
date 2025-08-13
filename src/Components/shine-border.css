@@ -1,0 +1,49 @@
+/* ./components/shine-border.css */
+.shine-border-container {
+  position: relative;
+  padding: 4px;
+  border-radius: 1rem;
+  display: inline-block;
+  background: transparent;
+  overflow: hidden;
+}
+
+.shine-border-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    #40ffaa,
+    #4079ff,
+    #40ffaa,
+    #4079ff,
+    #40ffaa
+  );
+  background-size: 300% 300%;
+  animation: shine-border-animation 5s linear infinite;
+  z-index: 0;
+}
+
+.shine-border-content {
+  position: relative;
+  z-index: 1;
+  border-radius: 0.875rem;
+  background-color: #111; /* Dark inner background */
+  color: white;
+  padding: 1rem;
+}
+
+@keyframes shine-border-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}

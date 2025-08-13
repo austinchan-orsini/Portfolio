@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi/Satoshi-Variable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./assets/fonts/Satoshi/Satoshi-VariableItalic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Satoshi', sans-serif;
+}

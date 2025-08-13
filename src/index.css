@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+/* Inter font is loaded in index.html */
+
+/* Apply the variable font to your VariableProximity component */
+.variable-proximity-demo {
+  font-family: 'Roboto Flex', system-ui, sans-serif;
+  font-variation-settings: 'wght' 400;
+  transition: font-variation-settings 0.1s ease;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1.2;
+  margin: 0; /* Remove any default margins */
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0e0e0eff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background-color: #0e0e0eff;
+}
+section.animated-home {
+  overflow-x: hidden;
+}
+
+html, body, #root {
+  -ms-overflow-style: none;   /* IE/Edge legacy */
+  scrollbar-width: none;      /* Firefox */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;              /* Chrome/Safari/Edge */
+}

@@ -1,0 +1,33 @@
+/* Simple 2-state neon glow (base + hover) */
+.neon-border {
+  /* Colors you can tweak */
+  --neon-primary: 100, 143, 255;  /* cyan */
+  --neon-secondary: 58, 123, 255; /* blue */
+
+  /* Intensity (opacity) for each layer */
+  --a1: 0.65;
+  --a2: 0.55;
+  --a3: 0.45;
+
+  /* Blur/spread for each layer */
+  --b1: 4px;
+  --b2: 8px;
+  --b3: 12px;
+
+  box-shadow:
+    0 0 var(--b1) rgba(var(--neon-primary), var(--a1)),
+    0 0 var(--b2) rgba(var(--neon-primary), var(--a2)),
+    0 0 var(--b3) rgba(var(--neon-secondary), var(--a3));
+  transition: box-shadow 220ms ease;
+}
+
+.neon-border:hover {
+  /* Stronger on hover (bump opacity + spread) */
+  --a1: 0.90;
+  --a2: 0.85;
+  --a3: 0.75;
+
+  --b1: 4px;
+  --b2: 10px;
+  --b3: 14px;
+}
