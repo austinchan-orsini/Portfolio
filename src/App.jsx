@@ -1,19 +1,17 @@
 import { useEffect, useRef } from 'react';
-import ShinyText from './Components/ShinyText';
-import SpotlightCard from './Components/SpotlightCard';
-import Magnet from './Components/Magnet';
 import VariableProximity from './Components/VariableProximity';
 import GradientText from './Components/GradientText';
 import ExperienceCard from './Components/ExperienceCard';
 import ScrollProgress from './Components/ScrollProgress';
 import Navbar from './Components/Navbar';
 import WorkTimeline from './Components/WorkTimeline';
-import GlareHover from './Components/GlareHover';
-import { MapPin, CirclePlus, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 import './fonts.css';
-import NeonDino from './Components/NeonDino';
+import NeonSparkle from './Components/NeonSparkle';
 import SlideInOnView from './Components/SlideInOnView';
 import ProjectsGrid from "./Components/ProjectsGrid";
+import ContactForm from "@/components/ContactForm";
+
 function App() {
   const containerRef = useRef(null);
   const listRef = useRef(null);
@@ -120,6 +118,18 @@ const projectsData = [
       extra: [{ label: "Docs", href: "#" }],
     },
   },
+    {
+    title: "Tradingview Telegram Alerts",
+    description:
+      "Real-time trading alerts with chart snapshots pushed to Telegram to keep traders informed.",
+    image: "/images/trading-telegram.png",
+    tags: ["Docker", "FastAPI", "Python", "Selenium"],
+    links: {
+      source: "#",
+      extra: [{ label: "Docs", href: "#" }],
+    },
+  },
+  
 ];
 
 
@@ -129,65 +139,86 @@ const projectsData = [
       <Navbar />
 
       {/* HOME */}
-      <section id="home" style={{ ...sectionStyle, minHeight: '100vh', position: 'relative' }}>
-        <SlideInOnView direction="left" offset={100} amount={0.5}>
-          <div className="flex flex-row items-center justify-center w-full px-10 gap-8">
-            {/* Left: text */}
-            <div className="text-7xl font-semibold satoshi-text text-white flex flex-col items-start gap-4 flex-shrink-0 w-[720px]">
-              <div className="flex items-center">
-                <p className="mr-6">Hello, I'm</p>
-                <GradientText
-                  colors={['#40ffaa', '#4079ff', '#40ffaa', '#4079ff', '#40ffaa']}
-                  animationSpeed={13}
-                  showBorder={false}
-                  className="custom-class"
-                >
-                  <strong>Austin</strong>
-                </GradientText>
-              </div>
-              <div
-                ref={containerRef}
-                className="w-full"
-                style={{
-                  position: 'relative',
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'flex-start',
-                  textAlign: 'left',
-                  height: 'auto',
-                }}
+{/* HOME */}
+<section id="home" style={{ ...sectionStyle, minHeight: '100vh', position: 'relative' }}>
+  <SlideInOnView direction="left" offset={100} amount={0.5}>
+    <div className="mx-auto w-full max-w-screen-xl px-4 md:px-10 pt-[50px] md:pt-20 md:pr-[260px] lg:pr-[360px] overflow-visible pb-100">
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 md:gap-12">
+        {/* Left: text */}
+        <div className="w-full md:max-w-[720px] flex-shrink-0 flex flex-col items-start gap-4">
+          <div className="satoshi-text text-white text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-semibold leading-tight text-balance">
+            <div className="flex items-center flex-wrap gap-x-3">
+              <p className="mr-2">Hello, I'm</p>
+              <GradientText
+                colors={['#40ffaa', '#4079ff', '#40ffaa', '#4079ff', '#40ffaa']}
+                animationSpeed={13}
+                showBorder={false}
+                className="custom-class"
               >
-                <VariableProximity
-                  label={`I am a sophomore at Boston College studying\nMathematics and Computer Science,\ninterested in and  software engineering.`}
-                  className="variable-proximity-demo text-white text-4xl"
-                  fromFontVariationSettings="'wght' 400"
-                  toFontVariationSettings="'wght' 1900"
-                  containerRef={containerRef}
-                  radius={100}
-                  falloff="linear"
-                />
-              </div>
+                <strong>Austin</strong>
+              </GradientText>
             </div>
-
-            {/* Right: dino */}
-            <NeonDino size={500} strength={5} padding={600} />
           </div>
-        </SlideInOnView>
-        <button
-          type="button"
-          onClick={() => {
-            const el = document.getElementById('work');
-            if (!el) return;
-            const y = el.getBoundingClientRect().top + window.pageYOffset - 80; // navbar height
-            window.scrollTo({ top: y, behavior: 'smooth' });
-          }}
-          className="absolute left-1/2 -translate-x-1/2 bottom-25 flex flex-col items-center text-white/70 hover:text-white focus:outline-none"
-          aria-label="Scroll to Work"
-        >
-          <span className="text-xs tracking-wide">Scroll</span>
-          <ChevronDown className="w-6 h-6 mt-1 animate-bounce [stroke-width:2]" />
-        </button>
-      </section>
+
+          <div
+            ref={containerRef}
+            className="w-full"
+            style={{
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
+              textAlign: 'left',
+              height: 'auto',
+            }}
+          >
+            <VariableProximity
+              label={`I am a sophomore at Boston College studying
+Mathematics and Computer Science,
+interested in software engineering.`}
+              className="variable-proximity-demo text-white text-2xl sm:text-3xl md:text-4xl"
+              fromFontVariationSettings="'wght' 400"
+              toFontVariationSettings="'wght' 1900"
+              containerRef={containerRef}
+              radius={80}        // smaller radius feels better on mobile
+              falloff="linear"
+            />
+          </div>
+        </div>
+      {/* Right: neon Sparkle (top-aligned, responsive) */}
+      <div className="self-start mt-6 md:mt-0">
+        {/* mobile */}
+        <div className="md:hidden">
+          <NeonSparkle size={40} strength={4} padding={0} />
+        </div>
+        {/* md+ */}
+        <div className="hidden md:block flex-shrink-0">
+          <NeonSparkle size={200} strength={3} padding={1000} />
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </SlideInOnView>
+
+  {/* Scroll button */}
+  <button
+    type="button"
+    onClick={() => {
+      const el = document.getElementById('work');
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 80; // navbar height
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }}
+    className="absolute left-1/2 -translate-x-1/2 bottom-6 sm:bottom-25 pb-[env(safe-area-inset-bottom)]
+               flex flex-col items-center text-white/70 hover:text-white focus:outline-none"
+    aria-label="Scroll to Work"
+  >
+    <span className="text-xs tracking-wide">Scroll</span>
+    <ChevronDown className="w-6 h-6 mt-1 animate-bounce [stroke-width:2]" />
+  </button>
+</section>
+
 
 
 <section id="work" style={sectionStyle}>
@@ -221,6 +252,12 @@ const projectsData = [
 
       {/* CONTACT */}
       <section id="contact" style={sectionStyle}>
+        <h1 className="satoshi-text text-5xl mb-6 md:text-6xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white text-left self-start w-full pl-16 md:pl-80">
+  Contact
+</h1>
+  <div className="w-full max-w-screen-xl mx-auto px-6 md:px-8">
+    <ContactForm />
+  </div>
         <div className="mt-8 mb-6 text-center text-white/90 space-y-1">
           <p className="text-sm md:text-base">
             Powered with midnight commits by <span className="font-semibold">Austin Chan-Orsini</span> 

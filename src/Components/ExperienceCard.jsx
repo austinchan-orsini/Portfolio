@@ -77,7 +77,7 @@ export default function ExperienceCard({
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${company} on LinkedIn`}
-                  className="relative inline-block mt-0.5"
+                  className="relative inline-block"
                   style={{ fontSize: "calc(var(--title-size) * 0.80)" }}
                 >
                   <span className="font-semibold text-white/80">{company}</span>
@@ -117,5 +117,6 @@ export default function ExperienceCard({
         </div>
       </motion.div>
     </div>
+    
   );
 }

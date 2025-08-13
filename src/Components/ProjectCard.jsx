@@ -18,7 +18,7 @@ export default function ProjectCard({
 
   return (
     <div
-      className={`rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:p-6
+      className={`h-full flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 md:p-6
                   hover:border-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_10px_30px_rgba(0,0,0,0.35)]
                   transition-all duration-300 ${className}`}
     >
@@ -37,31 +37,42 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {/* Title */}
-      <h3 className="mt-4 text-xl font-semibold text-white tracking-tight">
-        {title}
-      </h3>
+      {/* Content */}
+      <div className="flex-1">
+        {/* Title */}
+        <h3 className="mt-4 text-xl font-semibold text-white tracking-tight">
+          {title}
+        </h3>
 
-      {/* Description */}
-      <p className="mt-2 text-sm text-white/70 leading-relaxed">
-        {description}
-      </p>
+        {/* Description (clamped to 3 lines so cards stay uniform) */}
+        <p
+          className="mt-2 text-sm text-white/70 leading-relaxed"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
+          {description}
+        </p>
 
-      {/* Tags */}
-      {tags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-2">
-          {tags.map((t) => (
-            <span
-              key={t}
-              className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-white/80"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
-      )}
+        {/* Tags */}
+        {tags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {tags.map((t) => (
+              <span
+                key={t}
+                className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs text-white/80"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
 
-      {/* Actions */}
+      {/* Actions pinned to bottom */}
       {actions.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-3">
           {actions.map(({ label, href, Icon }) => (
