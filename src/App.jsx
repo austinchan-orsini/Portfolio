@@ -193,7 +193,7 @@ interested in software engineering.`}
         </div>
         {/* md+ */}
         <div className="hidden md:block flex-shrink-0">
-          <NeonSparkle size={200} strength={3} padding={1000} />
+          <NeonSparkle size={200} strength={5} padding={1000} />
         </div>
       </div>
 
@@ -272,7 +272,7 @@ interested in software engineering.`}
             {"🌙"}
           </p>
           <p p className="text-sm md:text-base">
-            © 2025 Insert Website Link
+            © 2025
           </p>
         </div>
 
