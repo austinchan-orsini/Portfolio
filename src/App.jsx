@@ -10,7 +10,7 @@ import './fonts.css';
 import NeonSparkle from './Components/NeonSparkle';
 import SlideInOnView from './Components/SlideInOnView';
 import ProjectsGrid from "./Components/ProjectsGrid";
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "./Components/ContactForm";
 
 function App() {
   const containerRef = useRef(null);
